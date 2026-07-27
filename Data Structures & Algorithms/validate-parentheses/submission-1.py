@@ -1,0 +1,19 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        parentheses = {
+            ")":"(",
+            "]":"[",
+            "}":"{"
+        }
+        stack = []
+        for par in s:
+            if par in parentheses:
+                if stack and stack[-1] == parentheses[par]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(par)
+        return True if not stack else False
+        
+            
